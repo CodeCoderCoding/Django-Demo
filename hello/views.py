@@ -23,12 +23,14 @@ def form_get(request):
 
 
 def search(request):
+    global p
     request.encoding='utf-8'
     if 'q' in request.GET and request.GET['q']:
-        message = '你搜索的内容为: ' + request.GET['q']
+        q = 'q的内容为: ' + request.GET['q']
+        p = 'p的内容为: ' + request.GET['p']
     else:
-        message = '你提交了空表单'
-    return HttpResponse(message)
+        q = '你提交了空表单'
+    return HttpResponse('hello, title archive, year={}, month={}\n'.format(q, p))
 
 
 # 接收POST请求数据
